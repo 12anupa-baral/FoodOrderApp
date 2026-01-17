@@ -1,0 +1,14 @@
+# Parcel
+-Dev Build
+-Local Server
+-HMR=Hot Module Replacement
+-File Watching Algorithm:written in c++
+-Caching -Faster Builds
+-Image Optimization
+-Minification
+-Bundling
+-Compress
+-consistent hashing
+-tree shaking -remove unused code
+-https
+-different dev and prod build

@@ -1,0 +1,35 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is Namaste React by Anupa Baral",
+  "keywords": [
+    "react"
+  ],
+  "homepage": "https://github.com/12anupa-baral/Namaste-React#readme",
+  "bugs": {
+    "url": "https://github.com/12anupa-baral/Namaste-React/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/12anupa-baral/Namaste-React.git"
+  },
+  "license": "ISC",
+  "author": "Anupa Baral",
+  "type": "commonjs",
+  "scripts": {
+    "test": "jest",
+    "start":"parcel index.html",
+    "build":" parcel build index.html"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.3"
+  },
+  "dependencies": {
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "browsersList":[
+    "last 2 versions"
+  ]
+
+}

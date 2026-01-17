@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  border:1px solid black;
+  align-items: center;
+  padding:0 20px;
+}
+.nav-items ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  gap: 20px;
+}
