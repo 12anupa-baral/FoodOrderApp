@@ -1,9 +1,7 @@
 import axios from "axios";
-const API_BASE_URL = "/api/api/v1";
+const API_BASE_URL = "/api/v1";
 // Get restaurant list
-const API_URL =
-  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=27.7172&lng=85.3240&page_type=DESKTOP_WEB_LISTING";
-
+const API_URL = `${API_BASE_URL}/listRestaurants`;
 export const getRestaurants = async () => {
   try {
     const { data } = await axios.get(API_URL);
