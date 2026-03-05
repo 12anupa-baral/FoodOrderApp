@@ -3,6 +3,7 @@ import SearchReastaurant from "./SearchReastaurant";
 import RestaurantCard from "./RestaurantCard";
 import styles from "./style.module.css";
 import { getRestaurants } from "../APIHelper";
+import Shimmer from "../Shimmer";
 const RestaurantContainer = () => {
   const [restaurants, setRestaurants] = useState([]);
 
@@ -22,6 +23,10 @@ const RestaurantContainer = () => {
     const filteredData = restaurants.filter((item) => item?.VendorRating > 3.8);
     setRestaurants(filteredData);
   };
+
+  if (restaurants.length === 0) {
+    return <Shimmer />;
+  }
 
   return (
     <div>

@@ -1,0 +1,71 @@
+.layout {
+  padding: 10px 50px;
+}
+
+/* reusable skeleton block */
+%shimmerBlock {
+  background: linear-gradient(90deg, #eeeeee 25%, #dddddd 37%, #eeeeee 63%);
+  background-size: 400% 100%;
+  border-radius: 10px;
+}
+
+/* shimmer container (same grid as cards) */
+.shimmerContainer {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* shimmer card */
+.shimmerCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  background: white;
+}
+
+/* image placeholder */
+.cardimg {
+  @extend %shimmerBlock;
+  height: 180px;
+}
+
+/* info placeholder */
+.foodInfo {
+  @extend %shimmerBlock;
+  height: 80px;
+}
+
+/* button placeholder */
+.view {
+  @extend %shimmerBlock;
+  height: 30px;
+  border: none;
+}
+
+/* shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+//header
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid black;
+  align-items: center;
+  padding: 0 20px;
+}
