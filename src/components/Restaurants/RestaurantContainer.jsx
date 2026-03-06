@@ -24,11 +24,10 @@ const RestaurantContainer = () => {
     setRestaurants(filteredData);
   };
 
-  if (restaurants.length === 0) {
-    return <Shimmer />;
-  }
-
-  return (
+//conditional rendering
+  return restaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div>
       <div className={styles.searchBar}>
         <SearchReastaurant />
@@ -43,6 +42,6 @@ const RestaurantContainer = () => {
       </div>
     </div>
   );
-};
+};;
 
 export default RestaurantContainer;
