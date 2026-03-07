@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import SearchReastaurant from "./SearchReastaurant";
 import RestaurantCard from "./RestaurantCard";
-import styles from "./style.module.css";
+import styles from "./style.module.scss";
 import { getRestaurants } from "../APIHelper";
 import Shimmer from "../Shimmer";
 const RestaurantContainer = () => {
   const [restaurants, setRestaurants] = useState([]);
+  const [searchText, setSAearchText] = useState("s");
 
+  //whenever state variable changes or updates react triggers a reconciliation cycle(re-render the component)
   useEffect(() => {
     fetchRestaurants();
   }, []);
@@ -24,17 +26,31 @@ const RestaurantContainer = () => {
     setRestaurants(filteredData);
   };
 
-//conditional rendering
+  const handleSearch = () => {
+    const filteredData = restaurants.filter((item) =>
+      item?.Name.includes(searchText),
+    );
+    setRestaurants(filteredData);
+  };
+
+  //conditional rendering
   return restaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div>
-      <div className={styles.searchBar}>
-        <SearchReastaurant />
+      {/* Top Section */}
+      <div className={styles.topBar}>
+        <SearchReastaurant
+          searchText={searchText}
+          setSAearchText={setSAearchText}
+          handleSearch={handleSearch}
+        />
+        <button className={styles.filterBtn} onClick={handleFilter}>
+          Filter Top Restaurants
+        </button>
       </div>
-      <button className={styles.filterBtn} onClick={handleFilter}>
-        Filter Top Restaurants
-      </button>
+
+      {/* Restaurant Grid */}
       <div className={styles.resContainer}>
         {restaurants.map((res) => (
           <RestaurantCard restaurantData={res} key={res?.Id} />
