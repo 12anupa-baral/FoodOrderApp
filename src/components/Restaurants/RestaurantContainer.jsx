@@ -6,7 +6,9 @@ import { getRestaurants } from "../APIHelper";
 import Shimmer from "../Shimmer";
 const RestaurantContainer = () => {
   const [restaurants, setRestaurants] = useState([]);
-  const [searchText, setSAearchText] = useState("s");
+  const [filteredData, setFilteredData] = useState();
+  const [searchText, setSAearchText] = useState("");
+  const [isTopFiltered, setIsTopFiltered] = useState(false);
 
   //whenever state variable changes or updates react triggers a reconciliation cycle(re-render the component)
   useEffect(() => {
@@ -23,14 +25,21 @@ const RestaurantContainer = () => {
 
   const handleFilter = () => {
     const filteredData = restaurants.filter((item) => item?.VendorRating > 3.8);
-    setRestaurants(filteredData);
+    setFilteredData(filteredData);
+    setIsTopFiltered(true);
   };
 
   const handleSearch = () => {
     const filteredData = restaurants.filter((item) =>
-      item?.Name.includes(searchText),
+      item?.Name.toLowerCase().includes(searchText.toLowerCase()),
     );
-    setRestaurants(filteredData);
+    setFilteredData(filteredData);
+  };
+
+  const handleReset = () => {
+    setSAearchText("");
+    setFilteredData();
+    setIsTopFiltered(false);
   };
 
   //conditional rendering
@@ -44,15 +53,19 @@ const RestaurantContainer = () => {
           searchText={searchText}
           setSAearchText={setSAearchText}
           handleSearch={handleSearch}
+          handleReset={handleReset}
         />
-        <button className={styles.filterBtn} onClick={handleFilter}>
-          Filter Top Restaurants
+        <button
+          className={styles.filterBtn}
+          onClick={isTopFiltered ? handleReset : handleFilter}
+        >
+          {isTopFiltered ? "Show All Restaurant" : "Filter Top Restaurants"}
         </button>
       </div>
 
       {/* Restaurant Grid */}
       <div className={styles.resContainer}>
-        {restaurants.map((res) => (
+        {(filteredData || restaurants).map((res) => (
           <RestaurantCard restaurantData={res} key={res?.Id} />
         ))}
       </div>

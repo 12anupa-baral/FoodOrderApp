@@ -52,6 +52,12 @@
     font-size: 14px;
 }
 
+.offer {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 /* ===== Search Bar ===== */
 
@@ -113,3 +119,14 @@
         cursor:pointer;
     }
 }
+
+  .btn{
+    margin-top: 10px;
+        padding:6px 10px;
+        border-radius: 8px;
+        border:none;
+        cursor:pointer;
+        background-color:rgb(247, 163, 27) ;
+        color: #ffffff;
+    }
+

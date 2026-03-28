@@ -18,8 +18,10 @@ const RestaurantCard = ({ restaurantData }) => {
           <div className={styles.time}>{restaurantData?.time}</div>
           <div className={styles.price}>{restaurantData.DeliveryDuration}</div>
         </div>
-        <div className={styles.offer}>{restaurantData?.CuisineTags}</div>
-        <button>Quick View</button>
+        <div className={styles.offer} title={restaurantData?.CuisineTags}>
+          {restaurantData?.CuisineTags}
+        </div>
+        <button className={styles.btn}>Quick View</button>
       </div>
     </>
   );
