@@ -17,14 +17,15 @@ const RestaurantContainer = () => {
 
   const fetchRestaurants = async () => {
     const data = await fetch(
-      "https://foodmandu.com/webapi/api/Vendor/GetVendors1?Cuisine=&DeliveryZoneId=1&IsFavorite=false&IsRecent=false&Keyword=&LocationLat=0&LocationLng=0&PageNo=1&PageSize=20&SortBy=4&VendorName=&VendorTags=%7B%7D&VendorTagsCSV=&search_by=restaurant",
+      "https://corsproxy.io/?url=https://foodmandu.com/webapi/api/Vendor/GetVendors1?Cuisine=&DeliveryZoneId=1&IsFavorite=false&IsRecent=false&Keyword=&LocationLat=0&LocationLng=0&PageNo=1&PageSize=20&SortBy=4&VendorName=&VendorTags=%7B%7D&VendorTagsCSV=&search_by=restaurant",
     );
     const restaurant = await data.json();
     setRestaurants(restaurant);
+    setFilteredData(restaurant);
   };
 
   const handleFilter = () => {
-    const filteredData = restaurants.filter((item) => item?.VendorRating > 3.8);
+    const filteredData = restaurants.filter((item) => item?.VendorRating > 4);
     setFilteredData(filteredData);
     setIsTopFiltered(true);
   };
@@ -38,7 +39,7 @@ const RestaurantContainer = () => {
 
   const handleReset = () => {
     setSAearchText("");
-    setFilteredData();
+    setFilteredData(restaurants);
     setIsTopFiltered(false);
   };
 
@@ -65,7 +66,7 @@ const RestaurantContainer = () => {
 
       {/* Restaurant Grid */}
       <div className={styles.resContainer}>
-        {(filteredData || restaurants).map((res) => (
+        {filteredData.map((res) => (
           <RestaurantCard restaurantData={res} key={res?.Id} />
         ))}
       </div>
