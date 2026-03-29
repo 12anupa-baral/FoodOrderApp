@@ -66,7 +66,7 @@ const RestaurantContainer = () => {
 
       {/* Restaurant Grid */}
       <div className={styles.resContainer}>
-        {filteredData.map((res) => (
+        {filteredData?.map((res) => (
           <RestaurantCard restaurantData={res} key={res?.Id} />
         ))}
       </div>
